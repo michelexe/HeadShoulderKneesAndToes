@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Head Shoulder Knees And Toes</string>
+    <string name="button_play">Play</string>
+    <string name="button_easy">Easy</string>
+    <string name="button_normal">Normal</string>
+    <string name="button_hard">Hard</string>
+    <string name="header_unknown">New Devices</string>
+    <string name="header_known">Known Devices</string>
+</resources>

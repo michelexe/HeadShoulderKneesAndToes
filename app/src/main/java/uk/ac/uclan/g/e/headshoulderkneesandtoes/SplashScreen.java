@@ -11,6 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.microsoft.band.BandClient;
+import com.microsoft.band.sensors.BandAccelerometerEventListener;
+import com.microsoft.band.sensors.BandSensorManager;
 
 import java.util.Random;
 
@@ -35,6 +37,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         this.displayAnimation();
+        
 
 
 

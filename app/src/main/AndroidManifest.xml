@@ -12,17 +12,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListBluetoothDevice" />
-        <activity android:name=".InformationBand" />
-        <activity android:name=".SplashScreen" />
-        <activity android:name=".LevelChoice"></activity>
+        <activity android:name=".ListBluetoothDeviceActiviy"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".InformationBand"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LevelChoiceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Tutorial"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".FullScreenImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_full_screen_image"
+            android:theme="@style/FullscreenTheme"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListBluetoothDevice.class);
+                Intent intent = new Intent(MainActivity.this, ListBluetoothDeviceActiviy.class);
                 startActivity(intent);
             }
         });
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 mp.setLooping(true);// loop on video
             }
         });
-
 
         video.setOnTouchListener(new View.OnTouchListener() {
             @Override // whenever the screen is touched while video is displayed

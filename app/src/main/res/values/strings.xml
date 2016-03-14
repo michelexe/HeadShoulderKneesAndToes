@@ -4,6 +4,12 @@
     <string name="button_easy">Easy</string>
     <string name="button_normal">Normal</string>
     <string name="button_hard">Hard</string>
-    <string name="header_unknown">New Devices</string>
-    <string name="header_known">Known Devices</string>
+
+
+    <string name="title_activity_full_screen_image">FullScreenImageActivity</string>
+    <string name="start">Continue</string>
+    <string name="equip">Equip your band</string>
+    <string name="skip_button">Skip</string>
+    <string name="tuto_presentation">Welcome in the tutorial</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

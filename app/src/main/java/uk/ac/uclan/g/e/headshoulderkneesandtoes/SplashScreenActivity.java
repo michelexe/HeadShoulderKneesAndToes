@@ -3,25 +3,20 @@ package uk.ac.uclan.g.e.headshoulderkneesandtoes;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import com.microsoft.band.BandClient;
-import com.microsoft.band.sensors.BandAccelerometerEventListener;
-import com.microsoft.band.sensors.BandSensorManager;
 
 import java.util.Random;
 
 /**
  * a loading Screen
  */
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private int progressStatus = 1;
+        // progress of bar
     private final int SPLASH_SCREEN_DELAY[]={1000,1500,2000,
                                             2500,3000,3500,4000,
                                             4500,5000,5500,6000,
@@ -72,7 +67,8 @@ public class SplashScreen extends AppCompatActivity {
                    public void run() {
                        try {
                            Thread.sleep(1900);
-                           Intent intent = new Intent(getApplicationContext(),LevelChoice.class);
+                           Intent intent = new Intent(getApplicationContext(),
+                                   FullScreenImageActivity.class);
                            intent.putExtras(getIntent().getExtras());
                            // the microsoft band actually connected
                            startActivity(intent);
@@ -87,17 +83,18 @@ public class SplashScreen extends AppCompatActivity {
         }.start();
 
 
+
         /*
          * random delay which correspond at the loading screen duration
 
           new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(),LevelChoice.class);
+                Intent intent = new Intent(getApplicationContext(),LevelChoiceActivity.class);
                 intent.putExtras(getIntent().getExtras());
                         // the microsoft band actually connected
                 startActivity(intent);
-                SplashScreen.this.finish();
+                SplashScreenActivity.this.finish();
             }
         }, SPLASH_SCREEN_DELAY[randomNbr]);
 

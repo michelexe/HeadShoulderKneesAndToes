@@ -2,12 +2,9 @@ package uk.ac.uclan.g.e.headshoulderkneesandtoes;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,13 +19,8 @@ import com.microsoft.band.BandException;
 import com.microsoft.band.BandInfo;
 import com.microsoft.band.BandPendingResult;
 import com.microsoft.band.ConnectionState;
-import com.microsoft.band.notifications.BandNotificationManager;
 
-import java.io.InterruptedIOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-
-public class ListBluetoothDevice extends AppCompatActivity {
+public class ListBluetoothDeviceActiviy extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 0;
     private ListView listView;
     private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -184,7 +176,7 @@ public class ListBluetoothDevice extends AppCompatActivity {
                             R.raw.connection_successful);
                     mediaPlayer.start(); // play a sound
                     Thread.sleep(3000); //
-                    Intent intent = new Intent(getApplicationContext(), SplashScreen.class);
+                    Intent intent = new Intent(getApplicationContext(), SplashScreenActivity.class);
                             // loading screen
                     Bundle bundle = new Bundle();
                     bundle.putInt(BAND_POSITION,this.indice);

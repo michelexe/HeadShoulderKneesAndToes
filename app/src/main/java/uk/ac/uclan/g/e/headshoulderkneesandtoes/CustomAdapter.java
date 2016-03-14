@@ -17,8 +17,9 @@ import android.widget.TextView;
 /**
  * create a new Adapter which allows section
  * and a new Theme
+ * code found on internet
  */
-class CustomAdapter extends BaseAdapter {
+public class CustomAdapter extends BaseAdapter {
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_SEPARATOR = 1;
@@ -33,11 +34,21 @@ class CustomAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    /**
+     * add a new Item to the listView
+     * item is value displayed
+     * @param item
+     */
     public void addItem(final String item) {
         mData.add(item);
         notifyDataSetChanged();
     }
 
+    /**
+     * Add a new Section
+     * item is the item of that section
+     * @param item
+     */
     public void addSectionHeaderItem(final String item) {
         mData.add(item);
         sectionHeader.add(mData.size() - 1);

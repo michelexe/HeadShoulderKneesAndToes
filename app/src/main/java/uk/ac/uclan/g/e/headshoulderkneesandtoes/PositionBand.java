@@ -15,11 +15,11 @@ public class PositionBand {
         position of band to recognize the head
          */
                                 X_HEAD = (float)-0.26375,
-                                    HEAD_MARGIN_ERROR_ON_X = (float)0.067272762,   //
+                                    HEAD_MARGIN_ERROR_ON_X = (float)0.2, //0.079911887,   //
                                 Y_HEAD = (float)0.17875,
-                                    HEAD_MARGIN_ERROR_ON_Y=(float)0.03961262,  //0.047054991
+                                    HEAD_MARGIN_ERROR_ON_Y=(float)0.2,//0.047054991,  //0.047054991
                                 Z_HEAD = (float)-0.92,
-                                    HEAD_MARGIN_ERROR_ON_Z=(float)0.039457948,  //0.04687126
+                                    HEAD_MARGIN_ERROR_ON_Z=(float)0.2,//0.04687126,  //0.04687126
 
 
         /* coordinates which given the right
@@ -36,22 +36,22 @@ public class PositionBand {
         /* coordinates which given the right
         position of band to recognize a knee
          */
-                                X_KNEE = (float)0.957428571,
-                                    KNEE_MARGIN_ERROR_ON_X=(float)0.235626727,
-                                Y_KNEE = (float)0.199285714,
-                                    KNEE_MARGIN_ERROR_ON_Y=(float)0.091485842,
-                                Z_KNEE = (float)0.171571429,
-                                    KNEE_MARGIN_ERROR_ON_Z=(float)0.080998523,
+                                X_KNEE = (float)0.9565,
+                                    KNEE_MARGIN_ERROR_ON_X=(float)0.022355495,
+                                Y_KNEE = (float)0.198625,
+                                    KNEE_MARGIN_ERROR_ON_Y=(float)0.077377297,
+                                Z_KNEE = (float)0.174,
+                                    KNEE_MARGIN_ERROR_ON_Z=(float)0.069380436,
 
         /* coordinates which given the right
         position of band to recognize toes
         */
-                                X_TOES = 0,
-                                    TOES_MARGIN_ERROR_ON_X=(float)0,
-                                Y_TOES = 0,
-                                    TOES_MARGIN_ERROR_ON_Y=(float)0,
-                                Z_TOES = 0,
-                                    TOES_MARGIN_ERROR_ON_Z=(float)0;
+                                X_TOES = (float)0.97775,
+                                    TOES_MARGIN_ERROR_ON_X=(float)0.017835428,
+                                Y_TOES = (float)-0.064,
+                                    TOES_MARGIN_ERROR_ON_Y=(float)0.085425988,
+                                Z_TOES = (float)0.057125,
+                                    TOES_MARGIN_ERROR_ON_Z=(float)0.092473424;
 
 
 
@@ -79,6 +79,7 @@ public class PositionBand {
         this.coordinateZ = z;
         this.flag = flag;
     }
+
 
     /**
      * return the right band position

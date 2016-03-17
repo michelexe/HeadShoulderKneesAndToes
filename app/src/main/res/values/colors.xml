@@ -6,5 +6,10 @@
     <color name="textListColor">#040081</color>
     <color name="white">#FFF</color>
     <color name="simple_red">#B9121B</color>
+    <color name="green">#00FF00</color>
+    <color name="violine">#A10684</color>
+    <color name="ironBlue">#3A8EBA</color>
+    <color name="malachiteGreen">#1FA055</color>
+    <color name="ocreRed">#DD985C</color>
     <color name="black_overlay">#66000000</color>
 </resources>

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.microsoft.band.BandClient;
@@ -17,7 +18,7 @@ import com.microsoft.band.sensors.BandAccelerometerEvent;
 import com.microsoft.band.sensors.BandAccelerometerEventListener;
 import com.microsoft.band.sensors.SampleRate;
 
-public class Tutorial extends AppCompatActivity {
+public class TutorialActivity extends AppCompatActivity {
 
     private boolean headTouch = false,
                     shoulderTouch = false,
@@ -28,6 +29,9 @@ public class Tutorial extends AppCompatActivity {
     private Bundle bundle;
     private Button skipButton;
     private MediaPlayer successMedia;
+    private ImageView imageView;
+    private int step; // depends of tutorial progress
+    private int imgTuto[]= {R.drawable.bear_shoulder_position,R.drawable.b03}; // contains all image available for the tuto
 
     private BandAccelerometerEventListener mAccelerometerEventListener = new BandAccelerometerEventListener() {
         @Override
@@ -53,53 +57,11 @@ public class Tutorial extends AppCompatActivity {
         successMedia = MediaPlayer.create(this,R.raw.success);
         skipButton = (Button)findViewById(R.id.skip_button);
             addClickListener();
+        imageView = (ImageView)findViewById(R.id.imageViewTuto);
+        step = 0;
 
         new AccelerometerSubscriptionTask().execute();
                 // start the listener
-
-
-
-
-    }
-
-    /**
-     * annex function which allows to simplify
-     * the BandAccelerometerEventListener code
-     * @param positionBand
-     * @throws BandIOException
-     */
-    private void processTutorial(PositionBand positionBand) throws BandIOException {
-        if(positionBand.equals(PositionBand.getHeadPosition()) && !headTouch){// if the band is on the head
-            headTouch = true;
-            musiqueStart();
-
-
-        }
-        if(headTouch){ // if the head has already been touched by the band
-
-            if(positionBand.equals(PositionBand.getShoulderPosition())){// same with shoulder
-                shoulderTouch = true;
-                successMedia.start();
-            }
-            if(shoulderTouch){
-                successMedia.stop();
-                successMedia.start();
-                if(positionBand.equals(PositionBand.getKneePosition())){// same with knee
-                    kneeTouch = true;
-                    successMedia.start();
-                }
-                if(kneeTouch){
-                    successMedia.stop();
-                    successMedia.start();
-                    if(positionBand.equals(PositionBand.getToesPosition())){
-                        successMedia.start();
-                        // end of the tutorial
-                        endOfTutorial();
-                    }
-
-                }
-            }
-        }
     }
 
     /**
@@ -118,6 +80,45 @@ public class Tutorial extends AppCompatActivity {
         });
     }
 
+    /**
+     * annex function which allows to simplify
+     * the BandAccelerometerEventListener code
+     * @param positionBand
+     * @throws BandIOException
+     */
+    private void processTutorial(PositionBand positionBand) throws BandIOException {
+        if(positionBand.equals(PositionBand.getHeadPosition()) && !headTouch){// if the band is on the head
+            headTouch = true;
+            musiqueStart();
+            nextImageTuto();
+        }
+        if(headTouch){ // if the head has already been touched by the band
+            if(positionBand.equals(PositionBand.getShoulderPosition()) && !shoulderTouch){// same with shoulder
+                shoulderTouch = true;
+                musiqueStart();
+                nextImageTuto();
+            }
+            if(shoulderTouch){
+                if(positionBand.equals(PositionBand.getKneePosition()) && !kneeTouch){// same with knee
+                    kneeTouch = true;
+                    musiqueStart();
+                    nextImageTuto();
+                }
+                if(kneeTouch){
+                    if(positionBand.equals(PositionBand.getToesPosition())){
+                        musiqueStart();
+                        // end of the tutorial
+                        endOfTutorial();
+                    }
+
+                }
+            }
+        }
+    }
+
+    /**
+     * start the Mediaplayer
+     */
     private void musiqueStart(){
         new Thread(new Runnable() {
             @Override
@@ -125,6 +126,29 @@ public class Tutorial extends AppCompatActivity {
                 successMedia.start();
             }
         }).start();
+    }
+
+
+    /**
+     * display next image of the tuto
+     */
+    private void nextImageTuto(){
+        new Thread(){
+            @Override
+            public void run(){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        imageView.setImageResource(imgTuto[step]);
+                        // display the next image
+                        step++;
+                    }
+                });
+            }
+        }.start();
+
+
+
     }
 
     /**

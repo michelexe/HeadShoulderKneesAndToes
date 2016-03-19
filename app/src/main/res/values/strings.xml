@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Head Shoulder Knees And Toes</string>
+    <string name="instructions">Do the following instructions</string>
     <string name="button_play">Play</string>
     <string name="button_easy">Easy</string>
     <string name="button_normal">Normal</string>
     <string name="button_hard">Hard</string>
+    <string name="button_replay">Replay</string>
+    <string name="leave">Exit</string>
+    <string name="button_menu">Back to menu</string>
 
 
     <string name="title_activity_full_screen_image">FullScreenImageActivity</string>

@@ -7,14 +7,27 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="uk.ac.uclan.g.e.headshoulderkneesandtoes.RandomGameActivity">
+    tools:context=".activity.game.RandomGameActivity">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        android:singleLine="true"
+        android:textStyle="italic"
+        android:text="@string/instructions"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ProgressBar
         android:id="@+id/iterationProgressbar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:max="500"
+        android:max="100"
         android:progress="0"
         android:progressDrawable="@drawable/circular_progress_bar"
         android:background="@drawable/circular_shape"
@@ -48,6 +61,19 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Points:"
+        android:textStyle="bold"
+        android:id="@+id/textViewPoint"
+        android:textSize="30sp"
+        android:textColor="@color/limegreen"
+        android:layout_below="@+id/iterationProgressbar"
+        android:layout_alignRight="@+id/iterationProgressbar"
+        android:layout_alignEnd="@+id/iterationProgressbar" />
 
 
 </RelativeLayout>

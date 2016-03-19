@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,28 +22,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListBluetoothDeviceActiviy"
+            android:name=".activity.ListBluetoothDeviceActiviy"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".InformationBand"
+            android:name=".activity.SplashScreenActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".activity.LevelChoiceActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LevelChoiceActivity"
+            android:name=".activity.TutorialActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TutorialActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".FullScreenImageActivity"
+            android:name=".activity.FullScreenImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_full_screen_image"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".UnrestrickedModeActivity" />
-        <activity android:name=".RandomGameActivity"></activity>
+        <activity android:name=".activity.game.UnrestrickedModeActivity" />
+        <activity android:name=".activity.game.RandomGameActivity" />
+        <activity android:name=".activity.game.ScoreActivity" />
+        <activity android:name=".activity.game.HardGameLevel"></activity>
     </application>
 
 </manifest>

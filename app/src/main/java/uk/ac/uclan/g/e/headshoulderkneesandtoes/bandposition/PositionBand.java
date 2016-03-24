@@ -9,7 +9,7 @@ import com.microsoft.band.sensors.BandAccelerometerEvent;
 public class PositionBand {
     private PositionFlag flag =null;
     private float coordinateX,coordinateY,coordinateZ; // X,Y Z coordinates
-    private static final float  // need to complete
+    private static float  // need to complete
 
         /*cordinates which given the right
         position of band to recognize the head
@@ -37,21 +37,21 @@ public class PositionBand {
         position of band to recognize a knee
          */
                                 X_KNEE = (float)0.9565,
-                                    KNEE_MARGIN_ERROR_ON_X=(float)0.10,//0.022355495
+                                    KNEE_MARGIN_ERROR_ON_X=(float)0.15,//0.022355495
                                 Y_KNEE = (float)0.198625,
-                                    KNEE_MARGIN_ERROR_ON_Y=(float)0.10,//0.077377297
+                                    KNEE_MARGIN_ERROR_ON_Y=(float)0.15,//0.077377297
                                 Z_KNEE = (float)0.174,
-                                    KNEE_MARGIN_ERROR_ON_Z=(float)0.10, //0.069380436
+                                    KNEE_MARGIN_ERROR_ON_Z=(float)0.15, //0.069380436
 
         /* coordinates which given the right
         position of band to recognize toes
         */
                                 X_TOES = (float)0.97775,
-                                    TOES_MARGIN_ERROR_ON_X=(float)0.05,  //0.017835428
+                                    TOES_MARGIN_ERROR_ON_X=(float)0.15,  //0.017835428
                                 Y_TOES = (float)-0.064,
-                                    TOES_MARGIN_ERROR_ON_Y=(float)0.05,  //0.085425988
+                                    TOES_MARGIN_ERROR_ON_Y=(float)0.15,  //0.085425988
                                 Z_TOES = (float)0.057125,
-                                    TOES_MARGIN_ERROR_ON_Z=(float)0.05; //0.092473424
+                                    TOES_MARGIN_ERROR_ON_Z=(float)0.15; //0.092473424
 
 
 
@@ -191,5 +191,53 @@ public class PositionBand {
 
     public PositionFlag getFlag(){
         return this.flag;
+    }
+
+    public static void setxHead(float xHead) {
+        X_HEAD = xHead;
+    }
+
+    public static void setyHead(float yHead) {
+        Y_HEAD = yHead;
+    }
+
+    public static void setzHead(float zHead) {
+        Z_HEAD = zHead;
+    }
+
+    public static void setxShoulder(float xShoulder) {
+        X_SHOULDER = xShoulder;
+    }
+
+    public static void setyShoulder(float yShoulder) {
+        Y_SHOULDER = yShoulder;
+    }
+
+    public static void setzShoulder(float zShoulder) {
+        Z_SHOULDER = zShoulder;
+    }
+
+    public static void setxKnee(float xKnee) {
+        X_KNEE = xKnee;
+    }
+
+    public static void setyKnee(float yKnee) {
+        Y_KNEE = yKnee;
+    }
+
+    public static void setzKnee(float zKnee) {
+        Z_KNEE = zKnee;
+    }
+
+    public static void setxToes(float xToes) {
+        X_TOES = xToes;
+    }
+
+    public static void setyToes(float yToes) {
+        Y_TOES = yToes;
+    }
+
+    public static void setzToes(float zToes) {
+        Z_TOES = zToes;
     }
 }

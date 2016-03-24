@@ -179,7 +179,7 @@ public class ListBluetoothDeviceActiviy extends AppCompatActivity {
                             R.raw.connection_successful);
                     mediaPlayer.start(); // play a sound
                     Thread.sleep(3000); //
-                    Intent intent = new Intent(getApplicationContext(), LevelChoiceActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), CalibrateActivity.class);
                             // loading screen
                     Bundle bundle = new Bundle();
                     bundle.putInt(BAND_POSITION,this.indice);

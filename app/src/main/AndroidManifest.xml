@@ -42,7 +42,8 @@
         <activity android:name=".activity.game.UnrestrickedModeActivity" />
         <activity android:name=".activity.game.RandomGameActivity" />
         <activity android:name=".activity.game.ScoreActivity" />
-        <activity android:name=".activity.game.HardGameLevel"></activity>
+        <activity android:name=".activity.game.HardGameLevel" />
+        <activity android:name=".activity.CalibrateActivity"></activity>
     </application>
 
 </manifest>

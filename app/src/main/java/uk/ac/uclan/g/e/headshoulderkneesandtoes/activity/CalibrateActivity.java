@@ -1,5 +1,7 @@
 package uk.ac.uclan.g.e.headshoulderkneesandtoes.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.microsoft.band.BandClient;
 import com.microsoft.band.BandException;
@@ -29,11 +32,17 @@ public class CalibrateActivity extends AppCompatActivity {
 
     private CalibPosition calibPosition;
     private CountDownTimer cdCalibrate;
-    private long CALIB_POSITION_DURATION = 2000; // 2s
+    private long CALIB_POSITION_DURATION = 4500; // 4s
 
     private ProgressBar bar;
     private Button startButton;
     private TextView namePosition;
+
+    private boolean allowedCalib;
+            /* regulate calibration
+            if false we don't take in account data from the band
+            otherwise everything works as expected
+             */
 
     private final PositionFlag flags []={
             PositionFlag.HEAD,
@@ -52,7 +61,8 @@ public class CalibrateActivity extends AppCompatActivity {
     private BandAccelerometerEventListener bandAccelerometerEventListener= new BandAccelerometerEventListener() {
         @Override
         public void onBandAccelerometerChanged(BandAccelerometerEvent event) {
-            calibPosition.addEvent(event); // while time isn't over add events to the Arraylist
+            if(allowedCalib) // if we are ready for calibration
+                calibPosition.addEvent(event); // while time isn't over add events to the Arraylist
         }
     };
 
@@ -60,8 +70,20 @@ public class CalibrateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calibrate);
-        init();
-        setCalibrate();
+        AlertDialog.Builder alertBuilder =
+                new AlertDialog.Builder(CalibrateActivity.this);
+        alertBuilder.setMessage("Now Tie your Microsoft Band to your wrist \n " +
+                "tap on Ok when it's done")
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                init();
+                                setCalibrate();
+                            }
+                        });
+        AlertDialog alertInformation =alertBuilder.create();
+        alertInformation.show();
+
     }
 
     private void init(){
@@ -81,8 +103,10 @@ public class CalibrateActivity extends AppCompatActivity {
         bar = (ProgressBar) findViewById(R.id.barCalibrate);
         bar.setMax((int) CALIB_POSITION_DURATION);
 
+        allowedCalib=false;
         new AccelerometerSubscriptionTask().execute();
-            // set the listener
+        // set the listener
+
 
 
     }
@@ -95,6 +119,10 @@ public class CalibrateActivity extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                allowedCalib=true;
+                Toast.makeText(getApplicationContext(),""+ calibPosition.getEventList().size(),
+                        Toast.LENGTH_SHORT).show();
+                    // we are ready to receive data
                 runCountDown();
             }
         });
@@ -140,9 +168,12 @@ public class CalibrateActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                allowedCalib=false;
+                    // we do not want data anymore
                 calibPosition.setCalibCoordinate(flags[index]);
+                Toast.makeText(getApplicationContext(),""+calibPosition.getEventList().size(),
+                        Toast.LENGTH_SHORT).show();
                 // modify default coordinate
-
                     index++;
                     if(index >= flags.length){
                         try {
@@ -176,7 +207,10 @@ public class CalibrateActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        namePosition.setText(flags[index].toString());
+                        namePosition.setText(
+                                "PUT YOUR HANDS ON YOUR "+
+                                flags[index].toString()
+                        );
                         // set Text which matchs positionband type nam
 
                     }

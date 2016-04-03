@@ -37,11 +37,11 @@ public class PositionBand {
         position of band to recognize a knee
          */
                                 X_KNEE = (float)0.9565,
-                                    KNEE_MARGIN_ERROR_ON_X=(float)0.15,//0.022355495
+                                    KNEE_MARGIN_ERROR_ON_X=(float)0.25,//0.022355495
                                 Y_KNEE = (float)0.198625,
-                                    KNEE_MARGIN_ERROR_ON_Y=(float)0.15,//0.077377297
+                                    KNEE_MARGIN_ERROR_ON_Y=(float)0.25,//0.077377297
                                 Z_KNEE = (float)0.174,
-                                    KNEE_MARGIN_ERROR_ON_Z=(float)0.15, //0.069380436
+                                    KNEE_MARGIN_ERROR_ON_Z=(float)0.25, //0.069380436
 
         /* coordinates which given the right
         position of band to recognize toes
@@ -239,5 +239,55 @@ public class PositionBand {
 
     public static void setzToes(float zToes) {
         Z_TOES = zToes;
+    }
+
+    // MARGE
+
+    public static void setHeadMarginErrorOnX(float headMarginErrorOnX) {
+        HEAD_MARGIN_ERROR_ON_X = headMarginErrorOnX;
+    }
+
+    public static void setHeadMarginErrorOnY(float headMarginErrorOnY) {
+        HEAD_MARGIN_ERROR_ON_Y = headMarginErrorOnY;
+    }
+
+    public static void setHeadMarginErrorOnZ(float headMarginErrorOnZ) {
+        HEAD_MARGIN_ERROR_ON_Z = headMarginErrorOnZ;
+    }
+
+    public static void setShoulderMarginErrorOnX(float shoulderMarginErrorOnX) {
+        SHOULDER_MARGIN_ERROR_ON_X = shoulderMarginErrorOnX;
+    }
+
+    public static void setShoulderMarginErrorOnY(float shoulderMarginErrorOnY) {
+        SHOULDER_MARGIN_ERROR_ON_Y = shoulderMarginErrorOnY;
+    }
+
+    public static void setShoulderMarginErrorOnZ(float shoulderMarginErrorOnZ) {
+        SHOULDER_MARGIN_ERROR_ON_Z = shoulderMarginErrorOnZ;
+    }
+
+    public static void setKneeMarginErrorOnY(float kneeMarginErrorOnY) {
+        KNEE_MARGIN_ERROR_ON_Y = kneeMarginErrorOnY;
+    }
+
+    public static void setKneeMarginErrorOnX(float kneeMarginErrorOnX) {
+        KNEE_MARGIN_ERROR_ON_X = kneeMarginErrorOnX;
+    }
+
+    public static void setKneeMarginErrorOnZ(float kneeMarginErrorOnZ) {
+        KNEE_MARGIN_ERROR_ON_Z = kneeMarginErrorOnZ;
+    }
+
+    public static void setToesMarginErrorOnX(float toesMarginErrorOnX) {
+        TOES_MARGIN_ERROR_ON_X = toesMarginErrorOnX;
+    }
+
+    public static void setToesMarginErrorOnY(float toesMarginErrorOnY) {
+        TOES_MARGIN_ERROR_ON_Y = toesMarginErrorOnY;
+    }
+
+    public static void setToesMarginErrorOnZ(float toesMarginErrorOnZ) {
+        TOES_MARGIN_ERROR_ON_Z = toesMarginErrorOnZ;
     }
 }

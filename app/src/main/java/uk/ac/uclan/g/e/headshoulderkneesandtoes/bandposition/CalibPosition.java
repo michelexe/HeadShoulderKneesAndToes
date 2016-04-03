@@ -41,7 +41,7 @@ public class CalibPosition {
      * get the average of all Y coordinate
      * @return avgY
      */
-    private float avgAcceleratorY(){
+    public float avgAcceleratorY(){
         float avgY = 0;
         for (int i=0; i<eventList.size();i++){
             avgY+=eventList.get(i).getAccelerationY();
@@ -53,12 +53,52 @@ public class CalibPosition {
      * get the average of all Z coordinate
      * @return avgZ
      */
-    private float avgAcceleratorZ(){
+    public float avgAcceleratorZ(){
         float avgZ = 0;
         for (int i=0; i<eventList.size();i++){
             avgZ+=eventList.get(i).getAccelerationZ();
         }
         return avgZ/eventList.size();
+    }
+
+
+
+    /**
+     *
+     * @return
+     */
+    private float [] getArrayCoordinateX(){
+        float []result = new float[eventList.size()];
+        for(int i=0;i<eventList.size();i++){
+            result[i]= eventList.get(i).getAccelerationX();
+        }
+        return result;
+    }
+
+
+    /**
+     *
+     * @return
+     */
+    private float []getArrayCoordinateY(){
+        float []result = new float[eventList.size()];
+        for(int i=0;i<eventList.size();i++){
+            result[i]= eventList.get(i).getAccelerationY();
+        }
+        return result;
+    }
+
+
+    /**
+     * get an Array
+     * @return
+     */
+    private float []getArrayCoordinateZ(){
+        float []result = new float[eventList.size()];
+        for(int i=0;i<eventList.size();i++){
+            result[i]= eventList.get(i).getAccelerationZ();
+        }
+        return result;
     }
 
     /**
@@ -102,73 +142,73 @@ public class CalibPosition {
         return result;
     }
 
-
     /**
      *
-     * @return
+     * @param array
+     * @param average
+     * @return the biggest difference between
+     * the average of value less The minus of the array
+     * or The max less the average
      */
-    private float [] getArrayCoordinateX(){
-        float []result = new float[eventList.size()];
-        for(int i=0;i<eventList.size();i++){
-            result[i]= eventList.get(i).getAccelerationX();
+    private float getMargeError(float [] array, float average){
+        float min = getMin(array);
+        float max = getMax(array);
+        float marge = 0;
+        if((average-min) > (max - average)){
+            marge = average-min;
+        }else{
+            marge = max -average;
         }
-        return result;
+        return marge;
     }
-
-
-    /**
-     *
-     * @return
-     */
-    private float []getArrayCoordinateY(){
-        float []result = new float[eventList.size()];
-        for(int i=0;i<eventList.size();i++){
-            result[i]= eventList.get(i).getAccelerationY();
-        }
-        return result;
-    }
-
-
-    /**
-     * get an Array
-     * @return
-     */
-    private float []getArrayCoordinateZ(){
-        float []result = new float[eventList.size()];
-        for(int i=0;i<eventList.size();i++){
-            result[i]= eventList.get(i).getAccelerationZ();
-        }
-        return result;
-    }
-
 
     /**
      * set average to PostionBand
      * depends on the flag given
      *modify default values of coordinate X,Y, Z
+     * margin are modified as well
      * from the class PositionBand
      * @param flag
      */
     public void setCalibCoordinate(PositionFlag flag){
         if(flag == PositionFlag.HEAD){// changes HEAD
             PositionBand.setxHead(avgAcceleratorX());
+
+
             PositionBand.setyHead(avgAcceleratorY());
+
+
             PositionBand.setzHead(avgAcceleratorZ());
+
 
         }else if(flag == PositionFlag.SHOULDER){
             PositionBand.setxShoulder(avgAcceleratorX());
+
+
             PositionBand.setyShoulder(avgAcceleratorY());
+
+
             PositionBand.setzShoulder(avgAcceleratorZ());
+
 
         }else if(flag == PositionFlag.KNEE){
             PositionBand.setxKnee(avgAcceleratorX());
+
+
             PositionBand.setyKnee(avgAcceleratorY());
+
+
             PositionBand.setzKnee(avgAcceleratorZ());
 
         }else if(flag == PositionFlag.TOES){
             PositionBand.setxToes(avgAcceleratorX());
+
+
             PositionBand.setyToes(avgAcceleratorY());
+
+
             PositionBand.setzToes(avgAcceleratorZ());
+
         }
     }
 
@@ -176,8 +216,15 @@ public class CalibPosition {
      * empty the eventList
      */
     public void emptyEventList(){
-        for (int i=0;i<eventList.size();i++){
+        /*for (int i=0;i<eventList.size();i++){
             eventList.remove(i);
         }
+        too slow
+        */
+        eventList = new ArrayList<>();
+    }
+
+    public ArrayList<BandAccelerometerEvent> getEventList() {
+        return eventList;
     }
 }
